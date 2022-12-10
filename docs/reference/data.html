@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataManagers &mdash; skater 0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gallery" href="../gallery.html" />
+    <link rel="prev" title="Model Objects" href="model.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> skater
+          
+
+          
+            
+            <img src="../_static/skater-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.1b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install Skater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interpretation.html">Interpretation Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Model Objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DataManagers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">skater</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
+        
+      <li>DataManagers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datamanagers">
+<h1>DataManagers<a class="headerlink" href="#datamanagers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>skater contains an abstraction for data, the DataManager. The DataManager
+is initialized with some data, and optionally some feature names and indexes. One created, the
+DataManager offers a generate_samples method, which includes options for several sampling algorithms.
+Any and all updates for handling, accessing, manipulating, saving, and loading data will be
+handled by the DataManager to ensure isolation from the rest of the code base.</p>
+<p>Currently, skater supports numpy ndarrays and pandas dataframes, with plans on supporting
+sparse arrays in future versions.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostedClassifier</span>
+
+<span class="n">breast_cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">breast_cancer</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">breast_cancer</span><span class="o">.</span><span class="n">target</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">breast_cancer</span><span class="o">.</span><span class="n">feature_names</span>
+
+
+<span class="kn">from</span> <span class="nn">skater.data</span> <span class="kn">import</span> <span class="n">DataManager</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">DataManager</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">feature_names</span> <span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;random-choice&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">generate_grid</span><span class="p">([</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="s1">&#39;ZN&#39;</span><span class="p">],</span> <span class="n">grid_resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="skater.data.DataManager.__init__">
+<code class="descclassname">DataManager.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>feature_names=None</em>, <em>index=None</em>, <em>log_level=30</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.data.DataManager.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The abstraction around using, accessing, sampling data for interpretation purposes.
+Used by interpretation objects to grab data, collect samples, and handle
+feature names and row indices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>X: 1D/2D numpy array, or pandas DataFrame</strong></dt>
+<dd><blockquote class="first">
+<div><p>raw data</p>
+</div></blockquote>
+<dl class="last docutils">
+<dt>y: 1D/2D numpy array, or pandas DataFrame</dt>
+<dd><p class="first last">ground truth labels for X</p>
+</dd>
+<dt>feature_names: iterable of feature names</dt>
+<dd><p class="first last">Optional keyword containing names of features.</p>
+</dd>
+<dt>index: iterable of row names</dt>
+<dd><p class="first last">Optional keyword containing names of indexes (rows).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.data.DataManager.generate_sample">
+<code class="descclassname">DataManager.</code><code class="descname">generate_sample</code><span class="sig-paren">(</span><em>sample=True</em>, <em>include_y=False</em>, <em>strategy='random-choice'</em>, <em>n_samples=1000</em>, <em>replace=True</em>, <em>bin_count=50</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.data.DataManager.generate_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for generating data from the dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sample</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><blockquote class="first">
+<div><p>If False, we’ll take the full dataset, otherwise we’ll sample.</p>
+</div></blockquote>
+<p>include_y: boolean (default=False)</p>
+<dl class="last docutils">
+<dt>strategy: string (default=’random-choice’)</dt>
+<dd><p class="first last">Supported strategy types ‘random-choice’, ‘uniform-from-percentile’, ‘uniform-over-similarity-ranks’</p>
+</dd>
+<dt>n_samples <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1000)</span></dt>
+<dd><p class="first last">Specifies the number of samples to return. Only implemented if strategy is “random-choice”.</p>
+</dd>
+<dt>replace <span class="classifier-delimiter">:</span> <span class="classifier">boolean (default=True)</span></dt>
+<dd><p class="first last">Bool for sampling with or without replacement</p>
+</dd>
+<dt>bin_count <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">If strategy is “uniform-over-similarity-ranks”, then this is the number
+of samples to take from each discrete rank.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.data.DataManager.generate_grid">
+<code class="descclassname">DataManager.</code><code class="descname">generate_grid</code><span class="sig-paren">(</span><em>feature_ids</em>, <em>grid_resolution=100</em>, <em>grid_range=(0.05</em>, <em>0.95)</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.data.DataManager.generate_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a grid of values on which to compute pdp. For each feature xi, for value
+yj of xi, we will fix xi = yj for every observation in X.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>feature_ids(list):</strong></dt>
+<dd><blockquote class="first">
+<div><p>Feature names for which we’ll generate a grid. Must be contained
+by self.feature_ids</p>
+</div></blockquote>
+<dl class="last docutils">
+<dt>grid_resolution(int):</dt>
+<dd><p class="first last">The number of unique values to choose for each feature.</p>
+</dd>
+<dt>grid_range(tuple):</dt>
+<dd><p class="first last">The percentile bounds of the grid. For instance, (.05, .95) corresponds to
+the 5th and 95th percentiles, respectively.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>grid(numpy.ndarray):    There are as many rows as there are feature_ids</strong></dt>
+<dd><p class="first last">There are as many columns as specified by grid_resolution</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.data.DataManager.generate_column_sample">
+<code class="descclassname">DataManager.</code><code class="descname">generate_column_sample</code><span class="sig-paren">(</span><em>feature_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.data.DataManager.generate_column_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a single feature from the data set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>feature_id: hashable</strong></dt>
+<dd><p class="first last">name of the feature to sample. If no feature names were passed, then
+the features are accessible via their column index.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gallery.html" class="btn btn-neutral float-right" title="Gallery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="model.html" class="btn btn-neutral" title="Model Objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, skater developers and contributors (MIT License).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

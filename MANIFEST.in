@@ -1,0 +1,5 @@
+# Include the license file
+include description.rst
+include LICENSE
+include setup.sh
+include skater/util/model_specific/*.json

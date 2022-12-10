@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Objects &mdash; skater 0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DataManagers" href="data.html" />
+    <link rel="prev" title="Interpretation Objects" href="interpretation.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> skater
+          
+
+          
+            
+            <img src="../_static/skater-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.1b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install Skater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interpretation.html">Interpretation Objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inmemorymodel">InMemoryModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deployedmodel">DeployedModel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">DataManagers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">skater</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
+        
+      <li>Model Objects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-objects">
+<h1>Model Objects<a class="headerlink" href="#model-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Skater contains an abstraction for predictive models. Models apis vary by implementation.
+The skater Model object manages variations in how models are called, the inputs they expect,
+and the outputs they generate, so that inputs, outputs, and calls are standardized to both the
+user and to the rest of the code base. Currently the Model object acts as the base class for the
+InMemoryModel and DeployedModel class, though this API may change in later versions.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+
+<span class="n">breast_cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">breast_cancer</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">breast_cancer</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">gb</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">gb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">skater.model</span> <span class="kn">import</span> <span class="n">InMemoryModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">InMemoryModel</span><span class="p">(</span><span class="n">gb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">,</span> <span class="n">examples</span> <span class="o">=</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="inmemorymodel">
+<h2>InMemoryModel<a class="headerlink" href="#inmemorymodel" title="Permalink to this headline">¶</a></h2>
+<p>Models that are callable function are exposed via the InMemoryModel object.</p>
+<dl class="method">
+<dt id="skater.model.InMemoryModel.__init__">
+<code class="descclassname">InMemoryModel.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>prediction_fn</em>, <em>input_formatter=None</em>, <em>output_formatter=None</em>, <em>target_names=None</em>, <em>feature_names=None</em>, <em>unique_values=None</em>, <em>examples=None</em>, <em>model_type=None</em>, <em>probability=None</em>, <em>log_level=30</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.model.InMemoryModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This model can be called directly from memory</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>prediction_fn: callable</strong></dt>
+<dd><p class="first last">function that returns predictions</p>
+</dd>
+<dt><strong>input_formatter: callable</strong></dt>
+<dd><p class="first last">This function will run on input data before passing
+to the prediction_fn. This usually should take your data type
+and convert them to numpy arrays or dataframes.</p>
+</dd>
+<dt><strong>output_formatter: callable</strong></dt>
+<dd><p class="first last">This function will run on input data before passing
+to the prediction_fn. This usually should take your data type
+and convert them to numpy arrays or dataframes.</p>
+</dd>
+<dt><strong>target_names: array type</strong></dt>
+<dd><p class="first last">(optional) names of classes that describe model outputs.</p>
+</dd>
+<dt><strong>feature_names: array type</strong></dt>
+<dd><p class="first last">(optional) Names of features the model consumes.</p>
+</dd>
+<dt><strong>unique_values: array type</strong></dt>
+<dd><p class="first">The set of possible output values. Only use on classifier models that
+return “best guess” predictions, not probability scores, e.g.</p>
+<p>model.predict(fruit1) -&gt; ‘apple’
+model.predict(fruit2) -&gt; ‘banana’</p>
+<p class="last">[‘apple’,’banana’] are the unique_values of the classifier</p>
+</dd>
+<dt><strong>examples: numpy.array or pandas.dataframe</strong></dt>
+<dd><p class="first last">optional examples to use to make inferences about the function.</p>
+</dd>
+<dt><strong>model_type: None, “classifier”, “regressor”</strong></dt>
+<dd><p class="first last">Indicates which type of model is being used. If left as None, will try to infer based on the
+signature of the output type.</p>
+</dd>
+<dt><strong>probability: None, True, False</strong></dt>
+<dd><p class="first last">If using a classifier, indicates whether probabilities are provided
+(as opposed to indicators/labels).</p>
+</dd>
+<dt><strong>log_level: int</strong></dt>
+<dd><p class="first last">config setting to see model logs. 10 is a good value for seeing debug messages.
+30 is warnings only.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="deployedmodel">
+<h2>DeployedModel<a class="headerlink" href="#deployedmodel" title="Permalink to this headline">¶</a></h2>
+<p>Models that are deployed, and therefore callable via http posts are exposed via the
+DeployedModel object.</p>
+<dl class="method">
+<dt id="skater.model.DeployedModel.__init__">
+<code class="descclassname">DeployedModel.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>uri</em>, <em>input_formatter</em>, <em>output_formatter</em>, <em>request_kwargs={}</em>, <em>target_names=None</em>, <em>feature_names=None</em>, <em>unique_values=None</em>, <em>examples=None</em>, <em>model_type=None</em>, <em>probability=None</em>, <em>log_level=30</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.model.DeployedModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This model can be called by making http requests
+to the passed in uri.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>uri: string</strong></dt>
+<dd><p class="first last">Where to post requests</p>
+</dd>
+<dt><strong>input_formatter: callable</strong></dt>
+<dd><p class="first last">This function will run on input data before passing
+to requests library. This usually should take array types
+and convert them to JSON.</p>
+</dd>
+<dt><strong>output_formatter: callable</strong></dt>
+<dd><p class="first last">This function will run on outputs before returning
+results to interpretation objects. This usually should take
+request objects and convert them to array types.</p>
+</dd>
+<dt><strong>request_kwargs: dict</strong></dt>
+<dd><p class="first last">any additional request headers that need to be passed, such as api
+keys, content types, etc.</p>
+</dd>
+<dt><strong>target_names: array type</strong></dt>
+<dd><p class="first last">(optional) The names of the target variable/classes. There should be as many
+names as there are outputs per prediction. Defaults to Predicted Value for
+regression and Class 1…n for classification.</p>
+</dd>
+<dt><strong>feature_names: array type</strong></dt>
+<dd><p class="first last">(optional) Names of features the model consumes.</p>
+</dd>
+<dt><strong>unique_values: array type</strong></dt>
+<dd><p class="first">The set of possible output values. Only use on classifier models that
+return “best guess” predictions, not probability scores, e.g.</p>
+<p>model.predict(fruit1) -&gt; ‘apple’
+model.predict(fruit2) -&gt; ‘banana’</p>
+<p class="last">[‘apple’,’banana’] are the unique_values of the classifier</p>
+</dd>
+<dt><strong>examples:</strong></dt>
+<dd><p class="first last">optional examples to use to make inferences about the function.</p>
+</dd>
+<dt><strong>model_type: None, “classifier”, “regressor”</strong></dt>
+<dd><p class="first last">Indicates which type of model is being used. If left as None, will try to infer based on the
+signature of the output type.</p>
+</dd>
+<dt><strong>probability: None, True, False</strong></dt>
+<dd><p class="first last">If using a classifier, indicates whether probabilities are provided
+(as opposed to indicators/labels).</p>
+</dd>
+<dt><strong>log_level: int</strong></dt>
+<dd><p class="first last">see skater.model.Model for details</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="DataManagers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="interpretation.html" class="btn btn-neutral" title="Interpretation Objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, skater developers and contributors (MIT License).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

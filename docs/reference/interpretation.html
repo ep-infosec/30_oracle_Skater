@@ -1,0 +1,2154 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Interpretation Objects &mdash; skater 0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Objects" href="model.html" />
+    <link rel="prev" title="API Reference" href="../api.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> skater
+          
+
+          
+            
+            <img src="../_static/skater-logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.1b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install Skater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Interpretation Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-data">Loading Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-interpretations">Global Interpretations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#feature-importance">Feature Importance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial-dependence">Partial Dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#local-interpretations">Local Interpretations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local-interpretable-model-agnostic-explanations-lime">Local Interpretable Model-Agnostic Explanations(LIME)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dnns-deepinterpreter">DNNs: DeepInterpreter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dnns-layerwise-relevance-propagation-e-lrp">DNNs: Layerwise Relevance Propagation(e-LRP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dnns-integrated-gradient">DNNs: Integrated Gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dnns-occlusion">DNNs: Occlusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#global-and-local-interpretations">Global And Local Interpretations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tree-surrogates-using-decision-trees">Tree Surrogates (using Decision Trees)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bayesian-rule-lists-brl">Bayesian Rule Lists(BRL)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Model Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">DataManagers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">skater</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Reference</a> &raquo;</li>
+        
+      <li>Interpretation Objects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/interpretation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interpretation-objects">
+<h1>Interpretation Objects<a class="headerlink" href="#interpretation-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<span id="interpretation-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Interpretation are initialized with a DataManager object, and expose interpretation algorithms as methods. For instance:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skater</span> <span class="kn">import</span> <span class="n">Interpretation</span><span class="p">()</span>
+<span class="n">interpreter</span> <span class="o">=</span> <span class="n">Interpretation</span><span class="p">()</span>
+<span class="n">interpreter</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">interpreter</span><span class="o">.</span><span class="n">feature_importance</span><span class="o">.</span><span class="n">feature_importance</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<p>Before running interpretation algorithms on a model, the Interpretation object usually needs data, either to learn about
+the distribution of the training set or to pass inputs into a prediction function.</p>
+<p>When calling Interpretation.load_data, the object creates a DataManager object, which handles the data, keeping track of feature
+and observation names, as well as providing various sampling algorithms.</p>
+<p>Currently load_data requires a numpy ndarray or pandas DataFrame, though we may add support for additional data structures in the future.
+For more details on what the DataManager does, please see the relevant documentation [PROVIDE LINK].</p>
+<dl class="method">
+<dt id="skater.core.explanations.Interpretation.load_data">
+<code class="descclassname">Interpretation.</code><code class="descname">load_data</code><span class="sig-paren">(</span><em>training_data</em>, <em>training_labels=None</em>, <em>feature_names=None</em>, <em>index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.explanations.Interpretation.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a DataSet object from inputs, ties to interpretation object.
+This will be exposed to all submodules.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>training_data: numpy.ndarray, pandas.DataFrame</strong></dt>
+<dd><p class="first last">the dataset. can be 1D or 2D</p>
+</dd>
+<dt><strong>feature_names: array-type</strong></dt>
+<dd><p class="first last">names to call features.</p>
+</dd>
+<dt><strong>index: array-type</strong></dt>
+<dd><p class="first last">names to call rows.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>None</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="global-interpretations">
+<span id="global-interpretation"></span><h2>Global Interpretations<a class="headerlink" href="#global-interpretations" title="Permalink to this headline">¶</a></h2>
+<p>A predictive model is a mapping from an input space to an output space. Interpretation algorithms
+are divided into those that offer statistics and metrics on regions of the domain, such as the
+marginal distribution of a feature, or the joint distribution of the entire training set.
+In an ideal world there would exist some representation that would allow a human
+to interpret a decision function in any number of dimensions. Given that we generally can only
+intuit visualizations of a few dimensions at time, global interpretation algorithms either aggregate
+or subset the feature space.</p>
+<p>Currently, model agnostic global interpretation algorithms supported by skater include
+partial dependence and feature importance.</p>
+<div class="section" id="feature-importance">
+<span id="interpretation-feature-importance"></span><h3>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h3>
+<p>Feature importance is generic term for the degree to which a predictive model relies on a particular
+feature. skater feature importance implementation is based on an information theoretic criteria,
+measuring the entropy in the change of predictions, given a perturbation of a given feature.
+The intuition is that the more a model’s decision criteria depend on a feature, the
+more we’ll see predictions change as a function of perturbing a feature.</p>
+<p>Jupyter Notebooks</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/ensemble_model.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/ensemble_model.ipynb</a></li>
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/sklearn-classifiers.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/sklearn-classifiers.ipynb</a></li>
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/sklearn_regression_models.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/sklearn_regression_models.ipynb</a></li>
+</ol>
+</div></blockquote>
+<dl class="class">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance">
+<em class="property">class </em><code class="descclassname">skater.core.global_interpretation.feature_importance.</code><code class="descname">FeatureImportance</code><span class="sig-paren">(</span><em>interpreter</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains methods for feature importance. Subclass of BaseGlobalInterpretation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><a class="reference internal" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.data_set" title="skater.core.global_interpretation.feature_importance.FeatureImportance.data_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_set</span></code></a></dt>
+<dd><p class="first last">data_set routes to the Interpreter’s dataset</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.training_labels" title="skater.core.global_interpretation.feature_importance.FeatureImportance.training_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">training_labels</span></code></a></dt>
+<dd><p class="first last">training_labels routes to the Interpreter’s training labels</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.feature_importance" title="skater.core.global_interpretation.feature_importance.FeatureImportance.feature_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_importance</span></code></a>(model_instance[,&nbsp;…])</td>
+<td>Computes feature importance of all features related to a model instance.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.load_data" title="skater.core.global_interpretation.feature_importance.FeatureImportance.load_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_data</span></code></a>(training_data[,&nbsp;index,&nbsp;feature_names])</td>
+<td>.consider routes to Interpreter’s .consider</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.plot_feature_importance" title="skater.core.global_interpretation.feature_importance.FeatureImportance.plot_feature_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_feature_importance</span></code></a>(modelinstance[,&nbsp;…])</td>
+<td>Computes feature importance of all features related to a model instance, then plots the results.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance.data_set">
+<code class="descname">data_set</code><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.data_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>data_set routes to the Interpreter’s dataset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance.feature_importance">
+<code class="descname">feature_importance</code><span class="sig-paren">(</span><em>model_instance</em>, <em>ascending=True</em>, <em>filter_classes=None</em>, <em>n_jobs=-1</em>, <em>progressbar=True</em>, <em>n_samples=5000</em>, <em>method='prediction-variance'</em>, <em>scorer_type='default'</em>, <em>use_scaling=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.feature_importance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes feature importance of all features related to a model instance.
+Supports classification, multi-class classification, and regression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>model_instance: skater.model.model.Model subtype</strong></dt>
+<dd><p class="first last">the machine learning model “prediction” function to explain, such that
+predictions = predict_fn(data).</p>
+</dd>
+<dt><strong>ascending: boolean, default True</strong></dt>
+<dd><p class="first last">Helps with ordering Ascending vs Descending</p>
+</dd>
+<dt><strong>filter_classes: array type</strong></dt>
+<dd><p class="first last">The classes to run partial dependence on. Default None invokes all classes.
+Only used in classification models.</p>
+</dd>
+<dt><strong>n_jobs: int</strong></dt>
+<dd><p class="first last">How many concurrent processes to use. Defaults -1, which grabs as many as are available.
+Use 1 to avoid multiprocessing altogether.</p>
+</dd>
+<dt><strong>progressbar: bool</strong></dt>
+<dd><p class="first last">Whether to display progress. This affects which function we use to operate on the pool
+of processes, where including the progress bar results in 10-20% slowdowns.</p>
+</dd>
+<dt><strong>n_samples: int</strong></dt>
+<dd><p class="first last">How many samples to use when computing importance.</p>
+</dd>
+<dt><strong>method: string (default ‘prediction-variance’; ‘model-scoring’ for estimator specific scoring metric</strong></dt>
+<dd><p class="first last">How to compute feature importance. ‘model-scoring’ requires Interpretation.training_labels.
+Note this choice should only rarely makes any significant differences
+prediction-variance: mean absolute value of changes in predictions, given perturbations.
+model-scoring: difference in log_loss or MAE of training_labels given perturbations.</p>
+</dd>
+<dt><strong>scorer_type: string</strong></dt>
+<dd><p class="first">only used when method=’model-scoring’, and in this case defines which scoring function to use.
+Default value is ‘default’, which evaluates to:</p>
+<blockquote>
+<div><p>regressors: mean absolute error
+classifiers with probabilities: cross entropy
+classifiers without probabilities: f1 score</p>
+</div></blockquote>
+<p class="last">See Skater.model.scorers for details.</p>
+</dd>
+<dt><strong>use_scaling: bool</strong></dt>
+<dd><p class="first last">Whether to weight the importance values by the strength of the perturbations.
+Generally doesn’t effect results unless n_samples is very small.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>importances</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Sorted Series</span></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>Wei, Pengfei, Zhenzhou Lu, and Jingwen Song. “Variable Importance Analysis: A Comprehensive Review”.
+Reliability Engineering &amp; System Safety 142 (2015): 399-432.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.model</span> <span class="k">import</span> <span class="n">InMemoryModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.explanations</span> <span class="k">import</span> <span class="n">Interpretation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">InMemoryModel</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">,</span> <span class="n">examples</span> <span class="o">=</span> <span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span> <span class="o">=</span> <span class="n">Interpretation</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">feature_importance</span><span class="o">.</span><span class="n">feature_importance</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance.load_data">
+<code class="descname">load_data</code><span class="sig-paren">(</span><em>training_data</em>, <em>index=None</em>, <em>feature_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>.consider routes to Interpreter’s .consider</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance.plot_feature_importance">
+<code class="descname">plot_feature_importance</code><span class="sig-paren">(</span><em>modelinstance</em>, <em>filter_classes=None</em>, <em>ascending=True</em>, <em>ax=None</em>, <em>progressbar=True</em>, <em>n_jobs=-1</em>, <em>n_samples=5000</em>, <em>method='prediction-variance'</em>, <em>scorer_type='default'</em>, <em>use_scaling=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.plot_feature_importance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes feature importance of all features related to a model instance,
+then plots the results. Supports classification, multi-class classification, and regression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>modelinstance: skater.model.model.Model subtype</strong></dt>
+<dd><p class="first last">estimator “prediction” function to explain the predictive model. Could be probability scores
+or target values</p>
+</dd>
+<dt><strong>filter_classes: array type</strong></dt>
+<dd><p class="first last">The classes to run partial dependence on. Default None invokes all classes.
+Only used in classification models.</p>
+</dd>
+<dt><strong>ascending: boolean, default True</strong></dt>
+<dd><p class="first last">Helps with ordering Ascending vs Descending</p>
+</dd>
+<dt><strong>ax: matplotlib.axes._subplots.AxesSubplot</strong></dt>
+<dd><p class="first last">existing subplot on which to plot feature importance. If none is provided,
+one will be created.</p>
+</dd>
+<dt><strong>progressbar: bool</strong></dt>
+<dd><p class="first last">Whether to display progress. This affects which function we use to operate on the pool
+of processes, where including the progress bar results in 10-20% slowdowns.</p>
+</dd>
+<dt><strong>n_jobs: int</strong></dt>
+<dd><p class="first last">How many concurrent processes to use. Defaults -1, which grabs as many as are available.
+Use 1 to avoid multiprocessing altogether.</p>
+</dd>
+<dt><strong>n_samples: int</strong></dt>
+<dd><p class="first last">How many samples to use when computing importance.</p>
+</dd>
+<dt><strong>method: string</strong></dt>
+<dd><p class="first last">How to compute feature importance. ‘model-scoring’ requires Interpretation.training_labels
+prediction-variance: mean absolute value of changes in predictions, given perturbations.
+model-scoring: difference in log_loss or MAE of training_labels given perturbations.
+Note this vary rarely makes any significant differences</p>
+</dd>
+<dt><strong>scorer_type: string</strong></dt>
+<dd><p class="first">only used when method=’model-scoring’, and in this case defines which scoring function to use.
+Default value is ‘default’, which evaluates to:</p>
+<blockquote>
+<div><p>regressors: mean absolute error
+classifiers with probabilities: cross entropy
+classifiers without probabilities: f1 score</p>
+</div></blockquote>
+<p class="last">See Skater.model.scorers for details.</p>
+</dd>
+<dt><strong>use_scaling: bool</strong></dt>
+<dd><p class="first last">Whether to weight the importance values by the strength of the perturbations.
+Generally doesn’t effect results unless n_samples is very small.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>f: figure instance</strong></dt>
+<dd></dd>
+<dt><strong>ax: matplotlib.axes._subplots.AxesSubplot</strong></dt>
+<dd><p class="first last">could be used to for further modification to the plots</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.model</span> <span class="k">import</span> <span class="n">InMemoryModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.explanations</span> <span class="k">import</span> <span class="n">Interpretation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">InMemoryModel</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">,</span> <span class="n">examples</span> <span class="o">=</span> <span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span> <span class="o">=</span> <span class="n">Interpretation</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">feature_importance</span><span class="o">.</span><span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.feature_importance.FeatureImportance.training_labels">
+<code class="descname">training_labels</code><a class="headerlink" href="#skater.core.global_interpretation.feature_importance.FeatureImportance.training_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>training_labels routes to the Interpreter’s training labels</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="partial-dependence">
+<span id="interpretation-partial-dependence"></span><h3>Partial Dependence<a class="headerlink" href="#partial-dependence" title="Permalink to this headline">¶</a></h3>
+<p>Partial Dependence describes the marginal impact of a feature on model prediction, holding
+other features in the model constant. The derivative of partial dependence describes the impact of a
+feature (analogous to a feature coefficient in a regression model).</p>
+<p>Jupyter Notebooks</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/ensemble_model.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/ensemble_model.ipynb</a></li>
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/sklearn-classifiers.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/sklearn-classifiers.ipynb</a></li>
+<li><a class="reference external" href="https://github.com/datascienceinc/Skater/blob/master/examples/sklearn_regression_models.ipynb">https://github.com/datascienceinc/Skater/blob/master/examples/sklearn_regression_models.ipynb</a></li>
+</ol>
+</div></blockquote>
+<dl class="class">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence">
+<em class="property">class </em><code class="descclassname">skater.core.global_interpretation.partial_dependence.</code><code class="descname">PartialDependence</code><span class="sig-paren">(</span><em>interpreter</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains methods for partial dependence. Subclass of BaseGlobalInterpretation</p>
+<p>Partial dependence adapted from:</p>
+<p>T. Hastie, R. Tibshirani and J. Friedman,
+Elements of Statistical Learning Ed. 2, Springer, 2009.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.data_set" title="skater.core.global_interpretation.partial_dependence.PartialDependence.data_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_set</span></code></a></dt>
+<dd><p class="first last">data_set routes to the Interpreter’s dataset</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.training_labels" title="skater.core.global_interpretation.partial_dependence.PartialDependence.training_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">training_labels</span></code></a></dt>
+<dd><p class="first last">training_labels routes to the Interpreter’s training labels</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.compute_3d_gradients" title="skater.core.global_interpretation.partial_dependence.PartialDependence.compute_3d_gradients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_3d_gradients</span></code></a>(pdp,&nbsp;mean_col,&nbsp;…[,&nbsp;…])</td>
+<td>Computes component-wise gradients of pdp dataframe.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.load_data" title="skater.core.global_interpretation.partial_dependence.PartialDependence.load_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_data</span></code></a>(training_data[,&nbsp;index,&nbsp;feature_names])</td>
+<td>.consider routes to Interpreter’s .consider</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.partial_dependence" title="skater.core.global_interpretation.partial_dependence.PartialDependence.partial_dependence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_dependence</span></code></a>(feature_ids,&nbsp;modelinstance)</td>
+<td>Approximates the partial dependence of the predict_fn with respect to the variables passed.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.plot_partial_dependence" title="skater.core.global_interpretation.partial_dependence.PartialDependence.plot_partial_dependence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_partial_dependence</span></code></a>(feature_ids,&nbsp;…[,&nbsp;…])</td>
+<td>Computes partial_dependence of a set of variables.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="77%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>feature_column_name_formatter</strong></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.compute_3d_gradients">
+<em class="property">static </em><code class="descname">compute_3d_gradients</code><span class="sig-paren">(</span><em>pdp</em>, <em>mean_col</em>, <em>feature_1</em>, <em>feature_2</em>, <em>scaled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.compute_3d_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes component-wise gradients of pdp dataframe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>pdp: pandas.DataFrame</strong></dt>
+<dd><p class="first last">DataFrame containing partial dependence values</p>
+</dd>
+<dt><strong>mean_col: string</strong></dt>
+<dd><p class="first last">column name corresponding to pdp value</p>
+</dd>
+<dt><strong>feature_1: string</strong></dt>
+<dd><p class="first last">column name corresponding to feature 1</p>
+</dd>
+<dt><strong>feature_2: string</strong></dt>
+<dd><p class="first last">column name corresponding to feature 2</p>
+</dd>
+<dt><strong>scaled: bool</strong></dt>
+<dd><p class="first last">Whether to scale the x1 and x2 gradients relative to x1 and x2 bin sizes</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>dx, dy, x_matrix, y_matrix, z_matrix</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.data_set">
+<code class="descname">data_set</code><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.data_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>data_set routes to the Interpreter’s dataset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.load_data">
+<code class="descname">load_data</code><span class="sig-paren">(</span><em>training_data</em>, <em>index=None</em>, <em>feature_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>.consider routes to Interpreter’s .consider</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.partial_dependence">
+<code class="descname">partial_dependence</code><span class="sig-paren">(</span><em>feature_ids</em>, <em>modelinstance</em>, <em>filter_classes=None</em>, <em>grid=None</em>, <em>grid_resolution=30</em>, <em>n_jobs=-1</em>, <em>grid_range=None</em>, <em>sample=True</em>, <em>sampling_strategy='random-choice'</em>, <em>n_samples=1000</em>, <em>bin_count=50</em>, <em>return_metadata=False</em>, <em>progressbar=True</em>, <em>variance_type='estimate'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.partial_dependence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximates the partial dependence of the predict_fn with respect to the
+variables passed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.plot_partial_dependence">
+<code class="descname">plot_partial_dependence</code><span class="sig-paren">(</span><em>feature_ids</em>, <em>modelinstance</em>, <em>filter_classes=None</em>, <em>grid=None</em>, <em>grid_resolution=30</em>, <em>grid_range=None</em>, <em>n_jobs=-1</em>, <em>sample=True</em>, <em>sampling_strategy='random-choice'</em>, <em>n_samples=1000</em>, <em>bin_count=50</em>, <em>with_variance=False</em>, <em>figsize=(16</em>, <em>10)</em>, <em>progressbar=True</em>, <em>variance_type='estimate'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.plot_partial_dependence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes partial_dependence of a set of variables. Essentially approximates
+the partial partial_dependence of the predict_fn with respect to the variables
+passed.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets.california_housing</span> <span class="k">import</span> <span class="n">fetch_california_housing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cal_housing</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
+<span class="go"># split 80/20 train-test</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cal_housing</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                            <span class="n">cal_housing</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">names</span> <span class="o">=</span> <span class="n">cal_housing</span><span class="o">.</span><span class="n">feature_names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training the estimator...&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                            <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;huber&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.explanations</span> <span class="k">import</span> <span class="n">Interpretation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span> <span class="o">=</span> <span class="n">Interpretation</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Feature name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input feature name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">names</span><span class="p">[</span><span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.model</span> <span class="k">import</span> <span class="n">InMemoryModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">InMemoryModel</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">examples</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span><span class="o">.</span><span class="n">partial_dependence</span><span class="o">.</span><span class="n">plot_partial_dependence</span><span class="p">([</span><span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">names</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">model</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                                        <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.partial_dependence.PartialDependence.training_labels">
+<code class="descname">training_labels</code><a class="headerlink" href="#skater.core.global_interpretation.partial_dependence.PartialDependence.training_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>training_labels routes to the Interpreter’s training labels</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="local-interpretations">
+<span id="interpretation-local"></span><h2>Local Interpretations<a class="headerlink" href="#local-interpretations" title="Permalink to this headline">¶</a></h2>
+<p>Local Interpretation could be possibly be achieved in two ways. Firstly, one could possibly approximate the
+behavior of a complex predictive model in the vicinity of a single input using a simple interpretable auxiliary or
+surrogate model (e.g. Linear Regressor). Secondly, one could use the base estimator to understand the behavior of a
+single prediction using intuitive approximate functions based on inputs and outputs.</p>
+<div class="section" id="local-interpretable-model-agnostic-explanations-lime">
+<h3>Local Interpretable Model-Agnostic Explanations(LIME)<a class="headerlink" href="#local-interpretable-model-agnostic-explanations-lime" title="Permalink to this headline">¶</a></h3>
+<p>LIME is a novel algorithm designed by Riberio Marco, Singh Sameer, Guestrin Carlos to access the behavior of the <cite>any</cite>
+base estimator(model) using interpretable surrogate models (e.g. linear classifier/regressor). Such form of
+comprehensive evaluation helps in generating explanations which are locally faithful but may not align with the global
+behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Reference:</th><td class="field-body">Riberio M, Singh S, Guestrin C(2016). Why Should {I} Trust You?”: Explaining the Predictions of Any Classifier
+(arXiv:1602.04938v3)</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer">
+<em class="property">class </em><code class="descclassname">skater.core.local_interpretation.lime.lime_tabular.</code><code class="descname">LimeTabularExplainer</code><span class="sig-paren">(</span><em>training_data</em>, <em>mode='classification'</em>, <em>training_labels=None</em>, <em>feature_names=None</em>, <em>categorical_features=None</em>, <em>categorical_names=None</em>, <em>kernel_width=None</em>, <em>verbose=False</em>, <em>class_names=None</em>, <em>feature_selection='auto'</em>, <em>discretize_continuous=True</em>, <em>discretizer='quartile'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Explains predictions on tabular (i.e. matrix) data.
+For numerical features, perturb them by sampling from a Normal(0,1) and
+doing the inverse operation of mean-centering and scaling, according to the
+means and stds in the training data. For categorical features, perturb by
+sampling according to the training distribution, and making a binary
+feature that is 1 when the value is the same as the instance being
+explained.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer.explain_instance" title="skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer.explain_instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explain_instance</span></code></a>(data_row,&nbsp;predict_fn[,&nbsp;…])</td>
+<td>Generates explanations for a prediction.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>convert_and_round</strong></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer.explain_instance">
+<code class="descname">explain_instance</code><span class="sig-paren">(</span><em>data_row</em>, <em>predict_fn</em>, <em>labels=(1</em>, <em>)</em>, <em>top_labels=None</em>, <em>num_features=10</em>, <em>num_samples=5000</em>, <em>distance_metric='euclidean'</em>, <em>model_regressor=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.lime.lime_tabular.LimeTabularExplainer.explain_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates explanations for a prediction.</p>
+<p>First, we generate neighborhood data by randomly perturbing features
+from the instance (see __data_inverse). We then learn locally weighted
+linear models on this neighborhood data to explain each of the classes
+in an interpretable way (see lime_base.py).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">data_row: 1d numpy array, corresponding to a row
+predict_fn: prediction function. For classifiers, this should be a</p>
+<blockquote>
+<div><p>function that takes a numpy array and outputs prediction
+probabilities. For regressors, this takes a numpy array and
+returns the predictions. For ScikitClassifiers, this is</p>
+<blockquote>
+<div><cite>classifier.predict_proba()</cite>. For ScikitRegressors, this
+is <cite>regressor.predict()</cite>.</div></blockquote>
+</div></blockquote>
+<p>labels: iterable with labels to be explained.
+top_labels: if not None, ignore labels and produce explanations for</p>
+<blockquote>
+<div>the K labels with highest prediction probabilities, where K is
+this parameter.</div></blockquote>
+<p class="last">num_features: maximum number of features present in explanation
+num_samples: size of the neighborhood to learn the linear model
+distance_metric: the distance metric to use for weights.
+model_regressor: sklearn regressor to use in explanation. Defaults
+to Ridge regression in LimeBase. Must have <a href="#id27"><span class="problematic" id="id28">model_regressor.coef_</span></a>
+and ‘sample_weight’ as a parameter to model_regressor.fit()</p>
+</dd>
+<dt>Returns:</dt>
+<dd>An Explanation object (see explanation.py) with the corresponding
+explanations.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dnns-deepinterpreter">
+<h3>DNNs: DeepInterpreter<a class="headerlink" href="#dnns-deepinterpreter" title="Permalink to this headline">¶</a></h3>
+<p>Helps in interpreting Deep Neural Network Models by computing the relevance/attribution of the output prediction of a
+deep network to its input features. The intention is to understand the input-output behavior of the complex network based
+on relevant contributing features.</p>
+<p><em>Define Relevance:</em> Also known as Attribution or Contribution. Lets define an input
+X = <span class="math notranslate nohighlight">\([x1, x2, ... xn] \in R^{n}\)</span> to a deep neural network(F) trained for binary
+classification (<span class="math notranslate nohighlight">\(F(x) \mapsto [0, 1]\)</span>). The goal of the relevance/attribution method is to compute
+the contribution scores of each input feature <span class="math notranslate nohighlight">\(x_{i}\)</span> to the output prediction. For e.g. for an image
+classification network, if the input <span class="math notranslate nohighlight">\(x_{i}\)</span> is represented as each pixel of the image, the attribution scores
+<span class="math notranslate nohighlight">\((a1, ..., an) \in R^{n}\)</span> could inform us which pixels of the image contributed in the selection of the
+particular class label.</p>
+<dl class="class">
+<dt id="skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter">
+<em class="property">class </em><code class="descclassname">skater.core.local_interpretation.dnni.deep_interpreter.</code><code class="descname">DeepInterpreter</code><span class="sig-paren">(</span><em>graph=None</em>, <em>session=None</em>, <em>log_level=30</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter" title="Permalink to this definition">¶</a></dt>
+<dd><p>:: Experimental :: The implementation is currently experimental and might change in future
+Interpreter for inferring Deep Learning Models. Given a trained NN model and an input vector X, DeepInterpreter
+is responsible for providing relevance scores w.r.t a target class to analyze most contributing features driving
+an estimator’s decision for or against the respective class</p>
+<p>Framework supported: Tensorflow(&gt;=1.4.0) and Keras(&gt;=2.0.8)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>graph</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tensorflow.Graph instance</span></dt>
+<dd></dd>
+<dt><strong>session</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tensorflow.Session to execute the graph(default session: tf.get_default_session())</span></dt>
+<dd></dd>
+<dt><strong>log_level</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default: _WARNING)</span></dt>
+<dd><p class="first last">The log_level could be adjusted to other values as well. Check here <cite>./skater/util/logger.py</cite></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r0fc9b34abba1-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ancona M, Ceolini E, Oztireli C, Gross M (ICLR, 2018).
+Towards better understanding of gradient-based attribution methods for Deep Neural Networks.
+<a class="reference external" href="https://arxiv.org/abs/1711.06104">https://arxiv.org/abs/1711.06104</a>
+(<a class="reference external" href="https://github.com/marcoancona/DeepExplain/blob/master/deepexplain/tensorflow/methods.py">https://github.com/marcoancona/DeepExplain/blob/master/deepexplain/tensorflow/methods.py</a>)</td></tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter.explain" title="skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter.explain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explain</span></code></a>(relevance_type,&nbsp;output_tensor,&nbsp;…)</td>
+<td>Helps in computing the relevance scores for DNNs to understand the input and output behavior of the network.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter.explain">
+<code class="descname">explain</code><span class="sig-paren">(</span><em>relevance_type</em>, <em>output_tensor</em>, <em>input_tensor</em>, <em>samples</em>, <em>use_case=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.dnni.deep_interpreter.DeepInterpreter.explain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps in computing the relevance scores for DNNs to understand the input and output behavior of the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>relevance_type: str</strong></dt>
+<dd><p class="first">Currently, relevance score could be computed using e-LRP(‘elrp’) or Integrated Gradient(‘ig’). Other
+algorithms are under development.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>epsilon-LRP(‘eLRP’):
+Is recommended with Activation ops (‘ReLU’ and ‘Tanh’). Current implementation of
+LRP works only for images and makes use of epsilon(default: 0.0001) as a stabilizer.</li>
+<li>Integrated Gradient(‘ig’):
+Is recommended with Activation ops (‘Relu’, ‘Elu’, ‘Softplus’, ‘Tanh’, ‘Sigmoid’).
+It works for images and text. Optional parameters include steps(default: 100) and
+baseline(default: {‘image’: ‘a black image’}; {‘txt’: zero input embedding vector})
+Gradient is computed by varying the input from the baseline(x’) to the provided input(x). x, x’
+are element of R with n dimension —&gt; [0,1]</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><strong>output_tensor: tensorflow.python.framework.ops.Tensor</strong></dt>
+<dd><p class="first last">Specify the output layer to start from</p>
+</dd>
+<dt><strong>input_tensor: tensorflow.python.framework.ops.Tensor</strong></dt>
+<dd><p class="first last">Specify the input layer to reach to</p>
+</dd>
+<dt><strong>samples: numpy.array</strong></dt>
+<dd><p class="first">Batch of input for which explanations are desired.
+Note: The first dimension of the array specifies the batch size. For e.g.,</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>for an image input of batch size 2: (2, 150, 150, 3) &lt;batch_size, image_width, image_height, no_of_channels&gt;</li>
+<li>for a text input of batch size 1: (1, 80) &lt;batch_size, embedding_dimensions&gt;</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><strong>use_case: str</strong></dt>
+<dd><p class="first last">Options: ‘image’ or ‘txt</p>
+</dd>
+<dt><strong>kwargs: optional</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>result: numpy.ndarray</strong></dt>
+<dd><p class="first last">Computed relevance(contribution) score for the given input</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r58da8c0454e4-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Bach S, Binder A, Montavon G, Klauschen F, Müller K-R, Samek W (2015)
+On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation.
+PLoS ONE 10(7): e0130140. <a class="reference external" href="https://doi.org/10.1371/journal.pone.0130140">https://doi.org/10.1371/journal.pone.0130140</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r58da8c0454e4-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Sundararajan, M, Taly, A, Yan, Q (ICML, 2017).
+Axiomatic Attribution for Deep Networks. <a class="reference external" href="http://arxiv.org/abs/1703.01365">http://arxiv.org/abs/1703.01365</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r58da8c0454e4-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>Ancona M, Ceolini E, Öztireli C, Gross M (ICLR, 2018).
+Towards better understanding of gradient-based attribution methods for Deep Neural Networks.
+<a class="reference external" href="https://arxiv.org/abs/1711.06104">https://arxiv.org/abs/1711.06104</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.local_interpretation.dnni.deep_interpreter</span> <span class="k">import</span> <span class="n">DeepInterpreter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">keras</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="k">import</span> <span class="n">mnist</span>
+<span class="go">&gt;&gt;&gt;from keras.models import Sequential, Model, load_model, model_from_yaml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">K</span><span class="o">.</span><span class="n">set_session</span><span class="p">(</span><span class="n">sess</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span> <span class="c1"># Load dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A simple network for MNIST data-set using Keras</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span> <span class="c1"># Compile and train the model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">K</span><span class="o">.</span><span class="n">set_learning_phase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">DeepInterpreter</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">K</span><span class="o">.</span><span class="n">get_session</span><span class="p">())</span> <span class="k">as</span> <span class="n">di</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="c1"># 1. Load the persisted model</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="c1"># 2. Retrieve the input tensor from the loaded model</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">yaml_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model_sample.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">loaded_model_yaml</span> <span class="o">=</span> <span class="n">yaml_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">yaml_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">loaded_model</span> <span class="o">=</span> <span class="n">model_from_yaml</span><span class="p">(</span><span class="n">loaded_model_yaml</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="c1"># load weights into new model</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">loaded_model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s2">&quot;model_mnist_cnn_3.h5&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded model from disk&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">loaded_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">loaded_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">output</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># 3. We will using the last dense layer(pre-softmax) as the output layer</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># 4. Instantiate a model with the new input and output tensor</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">new_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output_tensor</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">target_tensor</span> <span class="o">=</span> <span class="n">new_model</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">xs</span> <span class="o">=</span> <span class="n">input_x</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">ys</span> <span class="o">=</span> <span class="n">input_y</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ys</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># Original Predictions</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">print</span><span class="p">(</span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">relevance_scores</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s1">&#39;elrp&#39;</span><span class="p">,</span> <span class="n">output_tensor</span><span class="o">=</span><span class="n">target_tensor</span> <span class="o">*</span> <span class="n">ys</span><span class="p">,</span> <span class="n">input_tensor</span><span class="o">=</span><span class="n">input_tensor</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                                                               <span class="n">samples</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="n">use_case</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dnns-layerwise-relevance-propagation-e-lrp">
+<h3>DNNs: Layerwise Relevance Propagation(e-LRP)<a class="headerlink" href="#dnns-layerwise-relevance-propagation-e-lrp" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="skater.core.local_interpretation.dnni.gradient_relevance_scorer.LRP">
+<em class="property">class </em><code class="descclassname">skater.core.local_interpretation.dnni.gradient_relevance_scorer.</code><code class="descname">LRP</code><span class="sig-paren">(</span><em>output_tensor</em>, <em>input_tensor</em>, <em>samples</em>, <em>session</em>, <em>epsilon=0.0001</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.dnni.gradient_relevance_scorer.LRP" title="Permalink to this definition">¶</a></dt>
+<dd><p>LRP is technique to decompose the prediction(output) of a deep neural networks(DNNs) by computing relevance at
+each layer in a backward pass. Current implementation is computed using backpropagation by applying change rule on
+a modified gradient function. LRP could be implemented in different ways.
+This version implements the epsilon-LRP(Eq (58) as stated in [1] or Eq (2) in [2].
+Epsilon acts as a numerical stabilizer.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="rb853e2c760bc-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>Bach S, Binder A, Montavon G, Klauschen F, Müller K-R, Samek W (2015)
+On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation.
+PLoS ONE 10(7): e0130140. <a class="reference external" href="https://doi.org/10.1371/journal.pone.0130140">https://doi.org/10.1371/journal.pone.0130140</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="rb853e2c760bc-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td>Ancona M, Ceolini E, Öztireli C, Gross M:
+Towards better understanding of gradient-based attribution methods for Deep Neural Networks. ICLR, 2018</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="dnns-integrated-gradient">
+<h3>DNNs: Integrated Gradient<a class="headerlink" href="#dnns-integrated-gradient" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="skater.core.local_interpretation.dnni.gradient_relevance_scorer.IntegratedGradients">
+<em class="property">class </em><code class="descclassname">skater.core.local_interpretation.dnni.gradient_relevance_scorer.</code><code class="descname">IntegratedGradients</code><span class="sig-paren">(</span><em>output_tensor</em>, <em>input_tensor</em>, <em>samples</em>, <em>session</em>, <em>steps=100</em>, <em>baseline=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.dnni.gradient_relevance_scorer.IntegratedGradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrated Gradient is a relevance scoring algorithm for Deep network based on final predictions to its input
+features. The algorithm statisfies two fundamental axioms related to relevance/attribution computation,</p>
+<blockquote>
+<div><p>1.Sensitivity : For every input and baseline, if the change in one feature causes the prediction to change,
+then the that feature should have non-zero relevance score</p>
+<p>2.Implementation Invariance : Compute relevance(attribution) should be identical for functionally equivalent
+networks.</p>
+</div></blockquote>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r1cb969422b9a-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>Sundararajan, Mukund, Taly, Ankur, Yan, Qiqi (ICML, 2017).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r1cb969422b9a-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[2]</a></td><td>Ancona M, Ceolini E, Öztireli C, Gross M (ICLR, 2018).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r1cb969422b9a-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[3]</a></td><td>Taly, Ankur(2017) <a class="reference external" href="http://theory.stanford.edu/~ataly/Talks/sri_attribution_talk_jun_2017.pdf">http://theory.stanford.edu/~ataly/Talks/sri_attribution_talk_jun_2017.pdf</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="dnns-occlusion">
+<h3>DNNs: Occlusion<a class="headerlink" href="#dnns-occlusion" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="skater.core.local_interpretation.dnni.perturbation_relevance_scorer.Occlusion">
+<em class="property">class </em><code class="descclassname">skater.core.local_interpretation.dnni.perturbation_relevance_scorer.</code><code class="descname">Occlusion</code><span class="sig-paren">(</span><em>output_tensor</em>, <em>input_tensor</em>, <em>samples</em>, <em>current_session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.local_interpretation.dnni.perturbation_relevance_scorer.Occlusion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occlusion is a perturbation based inference algorithm. Such forms of algorithm direcly computes the
+relevance/attribution of the input features <span class="math notranslate nohighlight">\((X_{i})\)</span> by systematically occluding different
+portions of the image (by removing, masking or altering them), then running a forward pass on the new input to
+produce a new output, and then measuring and monitoring the difference between the original output and new output.
+Perturbation based interpretation helps one to compute direct estimation of the marginal effect of a feature but
+the inference might be computationally expensive depending on the cardinatlity of the feature space.
+The choice of the baseline value while perturbing through the feature space could be set to 0,
+as explained in detail by Zeiler &amp; Fergus, 2014[2].</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="rc648168cf5f8-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[1]</a></td><td>Ancona M, Ceolini E, Oztireli C, Gross M (ICLR, 2018).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="rc648168cf5f8-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[2]</a></td><td>Zeiler, M and Fergus, R (Springer, 2014). Visualizing and understanding convolutional networks.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="rc648168cf5f8-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[3]</a></td><td><a class="reference external" href="https://github.com/marcoancona/DeepExplain/blob/master/deepexplain/tensorflow/methods.py">https://github.com/marcoancona/DeepExplain/blob/master/deepexplain/tensorflow/methods.py</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="global-and-local-interpretations">
+<span id="interpretable-rule-based"></span><h2>Global And Local Interpretations<a class="headerlink" href="#global-and-local-interpretations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tree-surrogates-using-decision-trees">
+<h3>Tree Surrogates (using Decision Trees)<a class="headerlink" href="#tree-surrogates-using-decision-trees" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate">
+<em class="property">class </em><code class="descclassname">skater.core.global_interpretation.tree_surrogate.</code><code class="descname">TreeSurrogate</code><span class="sig-paren">(</span><em>oracle=None</em>, <em>splitter='best'</em>, <em>max_depth=None</em>, <em>min_samples_split=2</em>, <em>min_samples_leaf=1</em>, <em>min_weight_fraction_leaf=0.0</em>, <em>max_features=None</em>, <em>seed=None</em>, <em>max_leaf_nodes=None</em>, <em>min_impurity_decrease=0.0</em>, <em>min_impurity_split=None</em>, <em>class_weight='balanced'</em>, <em>presort=False</em>, <em>impurity_threshold=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate" title="Permalink to this definition">¶</a></dt>
+<dd><p>:: Experimental :: The implementation is currently experimental and might change in future.
+The idea of using TreeSurrogates as means for explaining a model’s(Oracle or the base model)
+learned decision policies(for inductive learning tasks) is inspired by the work of Mark W. Craven
+described as the TREPAN algorithm. In this explanation learning hypothesis, the base estimator(Oracle)
+could be any form of supervised learning predictive models. The explanations are approximated using
+DecisionTrees(both for Classification/Regression) by learning decision boundaries similar to that learned by
+the Oracle(predictions from the base model are used for learning the DecisionTree representation).
+The implementation also generates a fidelity score to quantify tree based surrogate model’s
+approximation to the Oracle. Ideally, the score should be 0 for truthful explanation
+both globally and locally.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>oracle</strong> <span class="classifier-delimiter">:</span> <span class="classifier">InMemory instance type</span></dt>
+<dd><p class="first last">model instance having access to the base estimator(InMemory/DeployedModel).
+Currently, only InMemory is supported.</p>
+</dd>
+<dt><strong>splitter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str (default=”best”)</span></dt>
+<dd><p class="first last">Strategy used to split at each the node. Supported strategies(“best” or “random”).</p>
+</dd>
+<dt><strong>max_depth</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=None)</span></dt>
+<dd><p class="first last">Defines the maximum depth of a tree. If ‘None’ then nodes are expanded till all leaves are         pure or contain less than min_samples_split samples.
+Deeper trees are prone to be more expensive and tend to over-fit.
+Pruning is a technique which could be applied to avoid over-fitting.</p>
+</dd>
+<dt><strong>min_samples_split</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int/float (default=2)</span></dt>
+<dd><p class="first">Defines the minimum number of samples required to split an internal node:</p>
+<ul class="last simple">
+<li>int, specifies the minimum number of samples</li>
+<li>float, then represents a percentage. Minimum number of samples is computed as           <cite>ceil(min_samples_split*n_samples)</cite></li>
+</ul>
+</dd>
+<dt><strong>min_samples_leaf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int/float (default=1)</span></dt>
+<dd><p class="first">Defines requirement for a leaf node. The minimum number of samples needed to be a leaf node:</p>
+<ul class="last simple">
+<li>int, specifies the minimum number of samples</li>
+<li>float, then represents a percentage. Minimum number of samples is computed as           <a href="#id13"><span class="problematic" id="id14">`</span></a>ceil(min_samples_split*n_samples)</li>
+</ul>
+</dd>
+<dt><strong>min_weight_fraction_leaf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.0)</span></dt>
+<dd><p class="first last">Defines requirement for a leaf node. The minimum weight percentage of the sum total of the weights of         all input samples.</p>
+</dd>
+<dt><strong>max_features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, float, string or None (default=None)</span></dt>
+<dd><p class="first">Defines number of features to consider for the best possible split:</p>
+<ul class="last simple">
+<li>None, all specified features are used (oracle.feature_names)</li>
+<li>int, uses specified values as <cite>max_features</cite> at each split.</li>
+<li>float, as a percentage. Value for split is computed as <cite>int(max_features * n_features)</cite>.</li>
+<li>“auto”, <cite>max_features=sqrt(n_features)</cite>.</li>
+<li>“sqrt”, <cite>max_features=sqrt(n_features)</cite>.</li>
+<li>“log2”, <cite>max_features=log2(n_features)</cite>.</li>
+</ul>
+</dd>
+<dt><strong>seed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, (default=None)</span></dt>
+<dd><p class="first last">seed for random number generator</p>
+</dd>
+<dt><strong>max_leaf_nodes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or None (default=None)</span></dt>
+<dd><p class="first last">TreeSurrogates are constructed top-down in best first manner(best decrease in relative impurity).
+If None, results in maximum possible number of leaf nodes. This tends to over-fitting.</p>
+</dd>
+<dt><strong>min_impurity_decrease</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.0)</span></dt>
+<dd><p class="first last">Tree node is considered for splitting if relative decrease in impurity is &gt;= <cite>min_impurity_decrease</cite>.</p>
+</dd>
+<dt><strong>class_weight</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict, list of dicts, str (“balanced” or None) (default=”balanced”)</span></dt>
+<dd><p class="first">Weights associated with classes for handling data imbalance:</p>
+<ul class="last simple">
+<li>None, all classes have equal weights</li>
+<li>“balanced”, adjusts the class weights automatically. Weights are assigned inversely proportional           to class frequencies <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">/</span> <span class="pre">(n_classes</span> <span class="pre">*</span> <span class="pre">np.bincount(y))</span></code></li>
+</ul>
+</dd>
+<dt><strong>presort</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=False)</span></dt>
+<dd><p class="first last">Sorts the data before building surrogates trees to find the best splits. When dealing with larger datasets,         setting it to True might result in increasing computation time because of the pre sorting operation.</p>
+</dd>
+<dt><strong>impurity_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.01)</span></dt>
+<dd><p class="first last">Specifies the acceptable disparity between the Oracle and TreeSurrogates. The higher the difference between         the Oracle and TreeSurrogate less faithful are the explanations generated.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r4a5a5c3b5496-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id15">[1]</a></td><td>Mark W. Craven(1996) EXTRACTING COMPREHENSIBLE MODELS FROM TRAINED NEURAL NETWORKS
+(<a class="reference external" href="http://ftp.cs.wisc.edu/machine-learning/shavlik-group/craven.thesis.pdf">http://ftp.cs.wisc.edu/machine-learning/shavlik-group/craven.thesis.pdf</a>)</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r4a5a5c3b5496-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id16">[2]</a></td><td>Mark W. Craven and Jude W. Shavlik(NIPS, 96). Extracting Thee-Structured Representations of Thained Networks
+(<a class="reference external" href="https://papers.nips.cc/paper/1152-extracting-tree-structured-representations-of-trained-networks.pdf">https://papers.nips.cc/paper/1152-extracting-tree-structured-representations-of-trained-networks.pdf</a>)</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r4a5a5c3b5496-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id17">[3]</a></td><td>DecisionTreeClassifier: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r4a5a5c3b5496-4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id18">[4]</a></td><td>DecisionTreeRegressor: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.explanations</span> <span class="k">import</span> <span class="n">Interpretation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.model</span> <span class="k">import</span> <span class="n">InMemoryModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.util.logger</span> <span class="k">import</span> <span class="n">_INFO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interpreter</span> <span class="o">=</span> <span class="n">Interpretation</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_inst</span> <span class="o">=</span> <span class="n">InMemoryModel</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">examples</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">unique_values</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                      <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">_INFO</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using the interpreter instance invoke call to the TreeSurrogate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surrogate_explainer</span> <span class="o">=</span> <span class="n">interpreter</span><span class="o">.</span><span class="n">tree_surrogate</span><span class="p">(</span><span class="n">oracle</span><span class="o">=</span><span class="n">model_inst</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surrogate_explainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">use_oracle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prune</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">scorer_type</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surrogate_explainer</span><span class="o">.</span><span class="n">plot_global_decisions</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span> <span class="s1">&#39;lightsteelblue&#39;</span><span class="p">,</span><span class="s1">&#39;darkkhaki&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                                         <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;simple_tree_pre.png&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">show_in_notebook</span><span class="p">(</span><span class="s1">&#39;simple_tree_pre.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>oracle</strong> <span class="classifier-delimiter">:</span> <span class="classifier">skater.model.local_model.InMemoryModel</span></dt>
+<dd><p class="first last">The fitted base model with the prediction function</p>
+</dd>
+<dt><strong>feature_names: list of str</strong></dt>
+<dd><p class="first last">Names of the features considered.</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimator_</span></code></a> <span class="classifier-delimiter">:</span> <span class="classifier">DecisionTreeClassifier/DecisionTreeRegressor</span></dt>
+<dd><p class="first last">Learned approximate surrogate estimator</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_type_" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_type_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimator_type_</span></code></a> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Estimator type</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.best_score_" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.best_score_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">best_score_</span></code></a> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.float64</span></dt>
+<dd><p class="first last">Best score post pre-pruning</p>
+</dd>
+<dt><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.scorer_name_" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.scorer_name_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scorer_name_</span></code></a> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Cost function used for optimization</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.decisions_as_txt" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.decisions_as_txt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decisions_as_txt</span></code></a>([scope,&nbsp;X])</td>
+<td>Retrieve the decision policies as text</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.fit" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X,&nbsp;Y[,&nbsp;use_oracle,&nbsp;prune,&nbsp;cv,&nbsp;…])</td>
+<td>Learn an approximate representation by constructing a Decision Tree based on the results retrieved by querying the Oracle(base model).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.plot_global_decisions" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.plot_global_decisions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_global_decisions</span></code></a>([colors,&nbsp;…])</td>
+<td>Visualizes the decision policies of the surrogate tree.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.predict" title="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X[,&nbsp;prob_score])</td>
+<td>Predict for input X</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.best_score_">
+<code class="descname">best_score_</code><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.best_score_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best score post pre-pruning</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.decisions_as_txt">
+<code class="descname">decisions_as_txt</code><span class="sig-paren">(</span><em>scope='global'</em>, <em>X=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.decisions_as_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the decision policies as text</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_">
+<code class="descname">estimator_</code><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learned approximate surrogate estimator</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_type_">
+<code class="descname">estimator_type_</code><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.estimator_type_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimator type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>use_oracle=True</em>, <em>prune='post'</em>, <em>cv=5</em>, <em>n_iter_search=10</em>, <em>scorer_type='default'</em>, <em>n_jobs=1</em>, <em>param_grid=None</em>, <em>impurity_threshold=0.01</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn an approximate representation by constructing a Decision Tree based on the results retrieved by
+querying the Oracle(base model). Instances used for training should belong to the base learners instance space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray, pandas.DataFrame</span></dt>
+<dd><p class="first last">Training input samples</p>
+</dd>
+<dt><strong>Y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray, target values(ground truth)</span></dt>
+<dd></dd>
+<dt><strong>use_oracle</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (defaul=True)</span></dt>
+<dd><p class="first">Use of Oracle, helps the Surrogate model train on the decision boundaries learned by the base model.             The closer the surrogate model is to the Oracle, more faithful are the explanations.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>True, builds a surrogate model against the predictions of the base model(Oracle).</li>
+<li>False, learns an interpretable tree based model using the supplied training examples and ground truth.</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><strong>prune</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None, str (default=”post”)</span></dt>
+<dd><p class="first">Pruning is a useful technique to control the complexity of the tree (keeping the trees comprehensive             and interpretable) without compromising on model’s accuracy. Avoiding to build large and deep trees             also helps in preventing over-fitting.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>“pre”</li>
+</ul>
+<p>Also known as forward/online pruning. This pruning process uses a termination               condition(high and low thresholds) to prematurely terminate some of the branches and nodes.
+Cross Validation is applied to measure the goodness of the fit while the tree is pruned.</p>
+<ul class="simple">
+<li>“pos”</li>
+</ul>
+<p>Also known as backward pruning. The pruning process is applied post the construction of the               tree using the specified model parameters. This involves reducing the branches and nodes using               a cost function. The current implementation support cost optimization using               Model’s scoring metrics(e.g. r2, log-loss, f1, …).</p>
+</div></blockquote>
+</dd>
+<dt><strong>cv</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, (default=5)</span></dt>
+<dd><p class="first last">Randomized cross validation used only for ‘pre-pruning’ right now.</p>
+</dd>
+<dt><strong>n_iter_search</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=10)</span></dt>
+<dd><p class="first last">Number of parameter setting combinations that are sampled for pre-pruning.</p>
+</dd>
+<dt><strong>scorer_type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str (default=”default”)</span></dt>
+<dd></dd>
+<dt><strong>n_jobs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">Number of jobs to run in parallel.</p>
+</dd>
+<dt><strong>param_grid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary of parameters to specify the termination condition for pre-pruning.</p>
+</dd>
+<dt><strong>impurity_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.01)</span></dt>
+<dd><p class="first last">Specifies acceptable performance drop when using Tree based surrogates to replicate the decision policies
+learned by the Oracle</p>
+</dd>
+<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=False)</span></dt>
+<dd><p class="first last">Helps control the verbosity.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r1f74c90da31f-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id19">[1]</a></td><td>Nikita Patel and Saurabh Upadhyay(2012)
+Study of Various Decision Tree Pruning Methods with their Empirical Comparison in WEKA
+(<a class="reference external" href="https://pdfs.semanticscholar.org/025b/8c109c38dc115024e97eb0ede5ea873fffdb.pdf">https://pdfs.semanticscholar.org/025b/8c109c38dc115024e97eb0ede5ea873fffdb.pdf</a>)</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.plot_global_decisions">
+<code class="descname">plot_global_decisions</code><span class="sig-paren">(</span><em>colors=None</em>, <em>enable_node_id=True</em>, <em>random_state=0</em>, <em>file_name='interpretable_tree.png'</em>, <em>show_img=False</em>, <em>fig_size=(20</em>, <em>8)</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.plot_global_decisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes the decision policies of the surrogate tree.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em>, <em>prob_score=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict for input X</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skater.core.global_interpretation.tree_surrogate.TreeSurrogate.scorer_name_">
+<code class="descname">scorer_name_</code><a class="headerlink" href="#skater.core.global_interpretation.tree_surrogate.TreeSurrogate.scorer_name_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cost function used for optimization</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="bayesian-rule-lists-brl">
+<h3>Bayesian Rule Lists(BRL)<a class="headerlink" href="#bayesian-rule-lists-brl" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC">
+<em class="property">class </em><code class="descclassname">skater.core.global_interpretation.interpretable_models.brlc.</code><code class="descname">BRLC</code><span class="sig-paren">(</span><em>iterations=30000</em>, <em>pos_sign=1</em>, <em>neg_sign=0</em>, <em>min_rule_len=1</em>, <em>max_rule_len=8</em>, <em>min_support_pos=0.1</em>, <em>min_support_neg=0.1</em>, <em>eta=1.0</em>, <em>n_chains=10</em>, <em>alpha=1</em>, <em>lambda_=10</em>, <em>discretize=True</em>, <em>drop_features=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC" title="Permalink to this definition">¶</a></dt>
+<dd><p>:: Experimental :: The implementation is currently experimental and might change in future</p>
+<p>BRLC(Bayesian Rule List Classifier) is a python wrapper for SBRL(Scalable Bayesian Rule list).
+SBRL is a scalable Bayesian Rule List. It’s a generative estimator to build hierarchical interpretable
+decision lists. This python wrapper is an extension to the work done by Professor Cynthia Rudin,
+Benjamin Letham, Hongyu Yang, Margo Seltzer and others. For more information check out the reference section below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>iterations</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=30000)</span></dt>
+<dd><p class="first last">number of iterations for each MCMC chain.</p>
+</dd>
+<dt><strong>pos_sign</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">sign for the positive labels in the “label” column.</p>
+</dd>
+<dt><strong>neg_sign</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=0)</span></dt>
+<dd><p class="first last">sign for the negative labels in the “label” column.</p>
+</dd>
+<dt><strong>min_rule_len</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">minimum number of cardinality for rules to be mined from the data-frame.</p>
+</dd>
+<dt><strong>max_rule_len</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=8)</span></dt>
+<dd><p class="first last">maximum number of cardinality for rules to be mined from the data-frame.</p>
+</dd>
+<dt><strong>min_support_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.1)</span></dt>
+<dd><p class="first last">a number between 0 and 1, for the minimum percentage support for the positive observations.</p>
+</dd>
+<dt><strong>min_support_neg</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default 0.1)</span></dt>
+<dd><p class="first last">a number between 0 and 1, for the minimum percentage support for the negative observations.</p>
+</dd>
+<dt><strong>eta</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">a hyper-parameter for the expected cardinality of the rules in the optimal rule list.</p>
+</dd>
+<dt><strong>n_chains</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=10)</span></dt>
+<dd><p class="first last">number of chains</p>
+</dd>
+<dt><strong>alpha</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">a prior pseudo-count for the positive(alpha1) and negative(alpha0) classes.         Default values (1, 1)</p>
+</dd>
+<dt><strong>lambda_</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=8)</span></dt>
+<dd><p class="first last">a hyper-parameter for the expected length of the rule list.</p>
+</dd>
+<dt><strong>discretize</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=True)</span></dt>
+<dd><p class="first last">apply discretizer to handle continuous features.</p>
+</dd>
+<dt><strong>drop_features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=False)</span></dt>
+<dd><p class="first last">once continuous features are discretized, use this flag to either retain or drop them from the dataframe</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r4433b1951d96-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id20">[1]</a></td><td>Letham et.al(2015) Interpretable classifiers using rules and Bayesian analysis:
+Building a better stroke prediction model (<a class="reference external" href="https://arxiv.org/abs/1511.01644">https://arxiv.org/abs/1511.01644</a>)</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r4433b1951d96-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id21">[2]</a></td><td>Yang et.al(2016) Scalable Bayesian Rule Lists (<a class="reference external" href="https://arxiv.org/abs/1602.08610">https://arxiv.org/abs/1602.08610</a>)</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r4433b1951d96-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id22">[3]</a></td><td><a class="reference external" href="https://github.com/Hongyuy/sbrl-python-wrapper/blob/master/sbrl/C_sbrl.py">https://github.com/Hongyuy/sbrl-python-wrapper/blob/master/sbrl/C_sbrl.py</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.global_interpretation.interpretable_models.brlc</span> <span class="k">import</span> <span class="n">BRLC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets.mldata</span> <span class="k">import</span> <span class="n">fetch_mldata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_df</span> <span class="o">=</span> <span class="n">fetch_mldata</span><span class="p">(</span><span class="s2">&quot;diabetes&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span> <span class="o">=</span> <span class="n">BRLC</span><span class="p">(</span><span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_chains</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Train a model, by default discretizer is enabled. So, you wish to exclude features then exclude them using</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the undiscretize_feature_list parameter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">bin_labels</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#print the learned model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_inst</span><span class="o">.</span><span class="n">print_model</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_to_descritize</span> <span class="o">=</span> <span class="n">Xtrain</span><span class="o">.</span><span class="n">columns</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Xtrain_filtered</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">discretizer</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">features_to_descritize</span><span class="p">,</span> <span class="n">labels_for_bin</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predict_scores</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">y_hat</span>  <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># save and reload the model and continue with evaluation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="s2">&quot;model.pkl&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;model.pkl&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># to access all the learned rules</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span><span class="o">.</span><span class="n">access_learned_rules</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="go"># For a complete example refer to rule_lists_continuous_features.ipynb or rule_lists_titanic_dataset.ipynb notebook</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.access_learned_rules" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.access_learned_rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">access_learned_rules</span></code></a>([rule_indexes])</td>
+<td>Access all learned decision rules.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.discretizer" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.discretizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretizer</span></code></a>(X,&nbsp;column_list[,&nbsp;…])</td>
+<td>A discretizer for continuous features</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_to_be_discretize</span></code>(clmn_list,&nbsp;unwanted_list)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.fit" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X,&nbsp;y_true[,&nbsp;n_quantiles,&nbsp;bin_labels,&nbsp;…])</td>
+<td>Fit the estimator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.load_model" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.load_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_model</span></code></a>(serialized_model_name)</td>
+<td>Load a serialized model</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>([X,&nbsp;prob_score,&nbsp;threshold,&nbsp;pos_label])</td>
+<td>Predict the class for input ‘X’ The predicted class is determined by setting a threshold.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict_proba" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</td>
+<td>Computes possible class probabilities for the input ‘X’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.print_model" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.print_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_model</span></code></a>()</td>
+<td>print the decision stumps of the learned estimator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.save_model" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.save_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_model</span></code></a>(model_name[,&nbsp;compress])</td>
+<td>Persist the model for future use</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.set_params" title="skater.core.global_interpretation.interpretable_models.brlc.BRLC.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(params)</td>
+<td>Set model hyper-parameters</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.access_learned_rules">
+<code class="descname">access_learned_rules</code><span class="sig-paren">(</span><em>rule_indexes='all'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.access_learned_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access all learned decision rules. This is useful for building and developing intuition</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>rule_indexes: str (default=”all”, retrieves all the rules)</strong></dt>
+<dd><p class="first last">Specify the index of the rules to be retrieved
+index could be set as ‘all’ or a range could be specified e.g. ‘(1:3)’ will retrieve the rules 1 and 2</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.discretizer">
+<code class="descname">discretizer</code><span class="sig-paren">(</span><em>X</em>, <em>column_list</em>, <em>no_of_quantiles=None</em>, <em>labels_for_bin=None</em>, <em>precision=3</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.discretizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A discretizer for continuous features</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame</span></dt>
+<dd><p class="first last">Dataframe containing continuous features</p>
+</dd>
+<dt><strong>column_list</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list/tuple</span></dt>
+<dd></dd>
+<dt><strong>no_of_quantiles</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or list</span></dt>
+<dd><p class="first last">Number of quantiles, e.g. deciles(10), quartiles(4) or as a list of quantiles[0, .25, .5, .75, 1.]
+if ‘None’ then [0, .25, .5, .75, 1.] is used</p>
+</dd>
+<dt><strong>labels_for_bin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">labels for the resulting bins</span></dt>
+<dd></dd>
+<dt><strong>precision</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">precision for storing and creating bins</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>new_X: pandas.DataFrame</strong></dt>
+<dd><p class="first last">Contains discretized features</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span> <span class="o">=</span> <span class="n">BRLC</span><span class="p">(</span><span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_chains</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_to_descritize</span> <span class="o">=</span> <span class="n">Xtrain</span><span class="o">.</span><span class="n">columns</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Xtrain_discretized</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">discretizer</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">features_to_descritize</span><span class="p">,</span> <span class="n">labels_for_bin</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predict_scores</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xtrain_discretized</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y_true</em>, <em>n_quantiles=None</em>, <em>bin_labels='default'</em>, <em>undiscretize_feature_list=None</em>, <em>precision=3</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame object, that could be used by the model for training.</span></dt>
+<dd><blockquote class="first">
+<div><p>It must not have a column named ‘label’</p>
+</div></blockquote>
+<p class="last">y_true : pandas.Series, 1-D array to store ground truth labels</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SBRL model instance: rpy2.robjects.vectors.ListVector</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.global_interpretation.interpretable_models.brlc</span> <span class="k">import</span> <span class="n">BRLC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span> <span class="o">=</span> <span class="n">BRLC</span><span class="p">(</span><span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_chains</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Train a model, by default discretizer is enabled. So, you wish to exclude features then exclude them using</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the undiscretize_feature_list parameter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">bin_labels</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.load_model">
+<code class="descname">load_model</code><span class="sig-paren">(</span><em>serialized_model_name</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a serialized model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X=None</em>, <em>prob_score=None</em>, <em>threshold=0.5</em>, <em>pos_label=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the class for input ‘X’
+The predicted class is determined by setting a threshold. Adjust threshold to
+balance between sensitivity and specificity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X: pandas.DataFrame</strong></dt>
+<dd><p class="first last">input examples to be scored</p>
+</dd>
+<dt><strong>prob_score: pandas.DataFrame or None (default=None)</strong></dt>
+<dd><p class="first last">If set to None, <cite>predict_proba</cite> is called before computing the class labels.
+If you have access to probability scores already, use the dataframe of probability scores to compute the
+final class label</p>
+</dd>
+<dt><strong>threshold: float (default=0.5)</strong></dt>
+<dd></dd>
+<dt><strong>pos_label: int (default=1)</strong></dt>
+<dd><p class="first last">specify how to identify positive label</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>y_prob, y_prob[‘label]: pandas.Series, numpy.ndarray</strong></dt>
+<dd><p class="first last">Contains the probability score for the input ‘X’</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict_proba">
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes possible class probabilities for the input ‘X’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X: pandas.DataFrame object</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pandas.DataFrame of shape (#datapoints, 2), the possible probability of each class for each observation</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.print_model">
+<code class="descname">print_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.print_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>print the decision stumps of the learned estimator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><em>model_name</em>, <em>compress=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist the model for future use</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.brlc.BRLC.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.brlc.BRLC.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model hyper-parameters</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC">
+<em class="property">class </em><code class="descclassname">skater.core.global_interpretation.interpretable_models.bigdatabrlc.</code><code class="descname">BigDataBRLC</code><span class="sig-paren">(</span><em>sub_sample_percentage=0.1</em>, <em>iterations=30000</em>, <em>pos_sign=1</em>, <em>neg_sign=0</em>, <em>min_rule_len=1</em>, <em>max_rule_len=8</em>, <em>min_support_pos=0.1</em>, <em>min_support_neg=0.1</em>, <em>eta=1.0</em>, <em>n_chains=10</em>, <em>alpha=1</em>, <em>lambda_=8</em>, <em>discretize=True</em>, <em>drop_features=False</em>, <em>threshold=0.5</em>, <em>penalty_param_svm=0.01</em>, <em>calibration_type='sigmoid'</em>, <em>cv_calibration=3</em>, <em>random_state=0</em>, <em>surrogate_estimator='SVM'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC" title="Permalink to this definition">¶</a></dt>
+<dd><p>:: Experimental :: The implementation is currently experimental and might change in future</p>
+<p>BigDataBRLC is a BRLC to handle large data-sets. Advisable to be used when the number of
+input examples&gt;1k. It approximates large datasets with the help of surrogate(metamodel) estimators. For example, it uses
+surrogate estimator such as SVC(Support Vector Classifier) or RandomForest by default to filter the data
+points which are closest to the decision boundary. The idea is to identify the minimum training set size
+(controlled by the parameter sub_sample_percentage) with the goal to maximize accuracy.
+This helps in reducing the computation time to build the final BRL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sub_sample_percentage</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.1)</span></dt>
+<dd><p class="first last">specify the fraction of the training sample to be retained for training BRL.</p>
+</dd>
+<dt><strong>iterations</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=30000)</span></dt>
+<dd><p class="first last">number of iterations for each MCMC chain.</p>
+</dd>
+<dt><strong>pos_sign</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">sign for the positive labels in the “label” column.</p>
+</dd>
+<dt><strong>neg_sign</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=0)</span></dt>
+<dd><p class="first last">sign for the negative labels in the “label” column.</p>
+</dd>
+<dt><strong>min_rule_len</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">minimum number of cardinality for rules to be mined from the data-frame.</p>
+</dd>
+<dt><strong>max_rule_len</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=8)</span></dt>
+<dd><p class="first last">maximum number of cardinality for rules to be mined from the data-frame.</p>
+</dd>
+<dt><strong>min_support_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.1)</span></dt>
+<dd><p class="first last">a number between 0 and 1, for the minimum percentage support for the positive observations.</p>
+</dd>
+<dt><strong>min_support_neg</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default 0.1)</span></dt>
+<dd><p class="first last">a number between 0 and 1, for the minimum percentage support for the negative observations.</p>
+</dd>
+<dt><strong>eta</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd></dd>
+<dt><strong>n_chains: int (default=10)</strong></dt>
+<dd></dd>
+<dt><strong>alpha</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=1)</span></dt>
+<dd><p class="first last">a prior pseudo-count for the positive(alpha1) and negative(alpha0) classes. Default values (1, 1)</p>
+</dd>
+<dt><strong>lambda_</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=8)</span></dt>
+<dd><p class="first last">a hyper-parameter for the expected length of the rule list.</p>
+</dd>
+<dt><strong>discretize</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=True)</span></dt>
+<dd><p class="first last">apply discretizer to handle continuous features.</p>
+</dd>
+<dt><strong>drop_features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (default=False)</span></dt>
+<dd><p class="first last">once continuous features are discretized, use this flag to either retain or drop them from the dataframe</p>
+</dd>
+<dt><strong>threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.5)</span></dt>
+<dd><p class="first last">specify the threshold for the decision boundary. This is the probability level to compute         distance of the predictions(for input examples) from the decision boundary. Input examples closest to the         decision boundary are sub-sampled. Size of sub-sampled data is controlled using ‘sub_sample_percentage’.</p>
+</dd>
+<dt><strong>penalty_param_svm</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float (default=0.01)</span></dt>
+<dd><p class="first">Regularization parameter(‘C’) for Linear Support Vector Classifier. Lower regularization value forces the         optimizer to maximize the hyperplane.</p>
+<p class="last">References: <a class="reference external" href="https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel">https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel</a></p>
+</dd>
+<dt><strong>calibration_type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string (default=’sigmoid’)</span></dt>
+<dd><p class="first">Calibrate the base estimator’s prediction(currently, all the base estimators are calibrated, that might
+change in future with more experimentation). Calibration could be performed in 2 ways
+1. parametric approach using Platt Scaling (‘sigmoid’)
+2. non-parametric approach using isotonic regression(‘isotonic).
+Avoid using isotonic regression for input examples&lt;&lt;1k because it tends to over-fit.</p>
+<p>References:</p>
+<p>[1] A. Niculescu-Mizil &amp; R. Caruana(ICML2005), Predicting Good Probabilities With Supervised Learning</p>
+<p>[2] <a class="reference external" href="https://www.cs.cornell.edu/~alexn/papers/calibration.icml05.crc.rev3.pdf">https://www.cs.cornell.edu/~alexn/papers/calibration.icml05.crc.rev3.pdf</a></p>
+<p class="last">[3] <a class="reference external" href="http://fastml.com/classifier-calibration-with-platts-scaling-and-isotonic-regression/">http://fastml.com/classifier-calibration-with-platts-scaling-and-isotonic-regression/</a></p>
+</dd>
+<dt><strong>cv_calibration</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int (default=3)</span></dt>
+<dd><p class="first last">specify number of folds for cross-validation splitting strategy</p>
+</dd>
+<dt><strong>random_state: int (default=0)</strong></dt>
+<dd></dd>
+<dt><strong>surrogate_estimator: string (default=’SVM’, ‘RF’: RandomForest)</strong></dt>
+<dd><p class="first last">Surrogate model to build the initial model for handling large datasets. Currently, SVM and RandomForest
+is supported.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r7d42cc42bd51-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id23">[1]</a></td><td>Dr. Tamas Madl, <a class="reference external" href="https://github.com/tmadl/sklearn-expertsys/blob/master/BigDataRuleListClassifier.py">https://github.com/tmadl/sklearn-expertsys/blob/master/BigDataRuleListClassifier.py</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r7d42cc42bd51-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id24">[2]</a></td><td><a class="reference external" href="https://pdfs.semanticscholar.org/e44c/9dcf90d5a9a7e74a1d74c9900ff69142c67f.pdf">https://pdfs.semanticscholar.org/e44c/9dcf90d5a9a7e74a1d74c9900ff69142c67f.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r7d42cc42bd51-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id25">[3]</a></td><td>Surrogate model: <a class="reference external" href="https://en.wikipedia.org/wiki/Surrogate_model">https://en.wikipedia.org/wiki/Surrogate_model</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r7d42cc42bd51-4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id26">[4]</a></td><td>W. Andrew Pruett , Robert L. Hester(2016),
+The Creation of Surrogate Models for Fast Estimation of Complex Model Outcomes
+(<a class="reference external" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156574">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156574</a>)</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.global_interpretation.interpretable_models.brlc</span> <span class="k">import</span> <span class="n">BRLC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.global_interpretation.interpretable_models.bigdatabrlc</span> <span class="k">import</span> <span class="n">BigDataBRLC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;input_data.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_big</span> <span class="o">=</span> <span class="n">BigDataBRLC</span><span class="p">(</span><span class="n">sub_sample_percentage</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<span class="gp">... </span>                                                <span class="n">n_chains</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">surrogate_estimator</span><span class="o">=</span><span class="s2">&quot;SVM&quot;</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_x</span><span class="p">,</span> <span class="n">n_y</span> <span class="o">=</span> <span class="n">sbrl_big</span><span class="o">.</span><span class="n">subsample</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sbrl_big</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">n_x</span><span class="p">,</span> <span class="n">n_y</span><span class="p">,</span> <span class="n">bin_labels</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="go"># For a complete example refer to credit_analysis_rule_lists.ipynb notebook in the `examples` section</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.access_learned_rules" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.access_learned_rules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">access_learned_rules</span></code></a>([rule_indexes])</td>
+<td>Access all learned decision rules.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.discretizer" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.discretizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discretizer</span></code></a>(X,&nbsp;column_list[,&nbsp;…])</td>
+<td>A discretizer for continuous features</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_to_be_discretize</span></code>(clmn_list,&nbsp;unwanted_list)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.fit" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X,&nbsp;y_true[,&nbsp;n_quantiles,&nbsp;bin_labels,&nbsp;…])</td>
+<td>Fit the estimator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.load_model" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.load_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_model</span></code></a>(serialized_model_name)</td>
+<td>Load a serialized model</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>([X,&nbsp;prob_score,&nbsp;threshold,&nbsp;pos_label])</td>
+<td>Predict the class for input ‘X’ The predicted class is determined by setting a threshold.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict_proba" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</td>
+<td>Computes possible class probabilities for the input ‘X’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.print_model" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.print_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_model</span></code></a>()</td>
+<td>print the decision stumps of the learned estimator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.save_model" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.save_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_model</span></code></a>(model_name[,&nbsp;compress])</td>
+<td>Persist the model for future use</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.set_params" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(params)</td>
+<td>Set model hyper-parameters</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.subsample" title="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.subsample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsample</span></code></a>(X,&nbsp;y[,&nbsp;pos_label,&nbsp;neg_label])</td>
+<td>subsampler to filter the input examples closer to the decision boundary</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.access_learned_rules">
+<code class="descname">access_learned_rules</code><span class="sig-paren">(</span><em>rule_indexes='all'</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.access_learned_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access all learned decision rules. This is useful for building and developing intuition</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>rule_indexes: str (default=”all”, retrieves all the rules)</strong></dt>
+<dd><p class="first last">Specify the index of the rules to be retrieved
+index could be set as ‘all’ or a range could be specified e.g. ‘(1:3)’ will retrieve the rules 1 and 2</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.discretizer">
+<code class="descname">discretizer</code><span class="sig-paren">(</span><em>X</em>, <em>column_list</em>, <em>no_of_quantiles=None</em>, <em>labels_for_bin=None</em>, <em>precision=3</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.discretizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A discretizer for continuous features</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame</span></dt>
+<dd><p class="first last">Dataframe containing continuous features</p>
+</dd>
+<dt><strong>column_list</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list/tuple</span></dt>
+<dd></dd>
+<dt><strong>no_of_quantiles</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or list</span></dt>
+<dd><p class="first last">Number of quantiles, e.g. deciles(10), quartiles(4) or as a list of quantiles[0, .25, .5, .75, 1.]
+if ‘None’ then [0, .25, .5, .75, 1.] is used</p>
+</dd>
+<dt><strong>labels_for_bin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">labels for the resulting bins</span></dt>
+<dd></dd>
+<dt><strong>precision</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">precision for storing and creating bins</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>new_X: pandas.DataFrame</strong></dt>
+<dd><p class="first last">Contains discretized features</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span> <span class="o">=</span> <span class="n">BRLC</span><span class="p">(</span><span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_chains</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_to_descritize</span> <span class="o">=</span> <span class="n">Xtrain</span><span class="o">.</span><span class="n">columns</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Xtrain_discretized</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">discretizer</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">features_to_descritize</span><span class="p">,</span> <span class="n">labels_for_bin</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predict_scores</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xtrain_discretized</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y_true</em>, <em>n_quantiles=None</em>, <em>bin_labels='default'</em>, <em>undiscretize_feature_list=None</em>, <em>precision=3</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame object, that could be used by the model for training.</span></dt>
+<dd><blockquote class="first">
+<div><p>It must not have a column named ‘label’</p>
+</div></blockquote>
+<p class="last">y_true : pandas.Series, 1-D array to store ground truth labels</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SBRL model instance: rpy2.robjects.vectors.ListVector</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skater.core.global_interpretation.interpretable_models.brlc</span> <span class="k">import</span> <span class="n">BRLC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sbrl_model</span> <span class="o">=</span> <span class="n">BRLC</span><span class="p">(</span><span class="n">min_rule_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rule_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_chains</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">drop_features</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Train a model, by default discretizer is enabled. So, you wish to exclude features then exclude them using</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the undiscretize_feature_list parameter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sbrl_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">bin_labels</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.load_model">
+<code class="descname">load_model</code><span class="sig-paren">(</span><em>serialized_model_name</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a serialized model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X=None</em>, <em>prob_score=None</em>, <em>threshold=0.5</em>, <em>pos_label=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the class for input ‘X’
+The predicted class is determined by setting a threshold. Adjust threshold to
+balance between sensitivity and specificity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X: pandas.DataFrame</strong></dt>
+<dd><p class="first last">input examples to be scored</p>
+</dd>
+<dt><strong>prob_score: pandas.DataFrame or None (default=None)</strong></dt>
+<dd><p class="first last">If set to None, <cite>predict_proba</cite> is called before computing the class labels.
+If you have access to probability scores already, use the dataframe of probability scores to compute the
+final class label</p>
+</dd>
+<dt><strong>threshold: float (default=0.5)</strong></dt>
+<dd></dd>
+<dt><strong>pos_label: int (default=1)</strong></dt>
+<dd><p class="first last">specify how to identify positive label</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>y_prob, y_prob[‘label]: pandas.Series, numpy.ndarray</strong></dt>
+<dd><p class="first last">Contains the probability score for the input ‘X’</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict_proba">
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes possible class probabilities for the input ‘X’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X: pandas.DataFrame object</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pandas.DataFrame of shape (#datapoints, 2), the possible probability of each class for each observation</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.print_model">
+<code class="descname">print_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.print_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>print the decision stumps of the learned estimator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><em>model_name</em>, <em>compress=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist the model for future use</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model hyper-parameters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.subsample">
+<code class="descname">subsample</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>pos_label=1</em>, <em>neg_label=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skater.core.global_interpretation.interpretable_models.bigdatabrlc.BigDataBRLC.subsample" title="Permalink to this definition">¶</a></dt>
+<dd><p>subsampler to filter the input examples closer to the decision boundary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>X</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame</span></dt>
+<dd><p class="first last">input examples representing the training set</p>
+</dd>
+<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.DataFrame</span></dt>
+<dd><p class="first last">target labels associated with the training set</p>
+</dd>
+<dt><strong>pos_label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd></dd>
+<dt><strong>neg_label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>X_, y_</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas.dataframe</span></dt>
+<dd></dd>
+<dt><strong>sub-sampled input examples</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="model.html" class="btn btn-neutral float-right" title="Model Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api.html" class="btn btn-neutral" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, skater developers and contributors (MIT License).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
